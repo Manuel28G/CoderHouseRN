@@ -3,12 +3,11 @@ import { TextInput } from "react-native";
 import { Style } from "./style";
 
 function CustomInput({ value, style, onTextChange }) {
-  const [inputValue, setInputValue] = useState(value);
   return (
     <TextInput
       style={[Style.inputText, style]}
       placeholder="Add new item"
-      value={inputValue}
+      value={value}
       onChangeText={(text) => {
         onTextChange(text);
       }}

@@ -23,7 +23,6 @@ export const Style = StyleSheet.create({
   },
   listContainer: {
     flexDirection: "row",
-    alignItems: "center",
     padding: 10,
     borderRadius: 20,
     paddingBottom: 50,

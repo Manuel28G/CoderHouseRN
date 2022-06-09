@@ -1,35 +1,44 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Button } from "react-native";
+import { View, Text, TouchableOpacity, Button, Modal } from "react-native";
+import { Style } from "./style";
 
-function CloseModal({ modalVisible, onHandleDelete, itemSelected, title }) {
-  //const title = "Are you sure that want to delete this item?";
+function CloseModal({
+  modalVisible,
+  onHandleDelete,
+  itemSelected,
+  subtitle,
+  title,
+  hideModal,
+}) {
   const buttonTitle = "Delete";
   return (
-    <View
+    <Modal
       animationType="slide"
-      transparent={true}
+      transparent={false}
       visible={modalVisible}
       onRequestClose={() => null}
     >
       <View style={Style.modalContainer}>
         <View style={Style.modalTitleContainer}>
-          <Text style={Style.modalTitle}>Texto</Text>
+          <Text style={Style.modalTitle}>{title}</Text>
           <TouchableOpacity
-            style={Style.deleteButton}
-            onPress={() => setModalVisible(!modalVisible)}
+            style={Style.closeButton}
+            onPress={() => hideModal()}
           >
-            <Text style={Style.deleteButtonText}>X</Text>
+            <Text style={Style.closeButtonText}>X</Text>
           </TouchableOpacity>
         </View>
-        <Text style={Style.modalTitle}>{title}</Text>
+        <Text style={Style.modalSubtitle}>{subtitle}</Text>
         <Text style={Style.modalMessage}>{itemSelected.title}</Text>
-        <Button
-          color="#6B4E71"
-          title={buttonTitle}
-          onPress={() => onHandleDelete(itemSelected.id)}
-        />
+        <View style={Style.deleteButton}>
+          <Button
+            color="#ff4d94"
+            title={buttonTitle}
+            onPress={() => onHandleDelete(itemSelected.id)}
+          />
+        </View>
       </View>
-    </View>
+    </Modal>
   );
 }
 

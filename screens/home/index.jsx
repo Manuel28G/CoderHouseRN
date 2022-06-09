@@ -3,6 +3,7 @@ import { View, FlatList, TouchableOpacity, Text, Button } from "react-native";
 import ListItem from "../../components/molecules/Item-list";
 import CustomInput from "../../components/atoms/custom-input";
 import CircularButton from "../../components/atoms/circular-button";
+import CloseModal from "../../components/molecules/close-modal";
 import { Style } from "./styles";
 
 function Home() {
@@ -11,6 +12,9 @@ function Home() {
 
   const [itemSelected, setItemSelected] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
+
+  const deleteSubtitle = "Are you sure that you want to delete this item?";
+  const deleteTitle = "Item delete";
 
   const handleTextChange = (text) => {
     setText(text);
@@ -68,6 +72,16 @@ function Home() {
           data={list}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
+        />
+        <CloseModal
+          modalVisible={modalVisible}
+          hideModal={() => setModalVisible(!modalVisible)}
+          onHandleDelete={(id) => {
+            onHandleDelete(id);
+          }}
+          itemSelected={itemSelected}
+          title={deleteTitle}
+          subtitle={deleteSubtitle}
         />
       </View>
     </View>

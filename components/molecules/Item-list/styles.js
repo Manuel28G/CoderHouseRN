@@ -1,10 +1,14 @@
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
+export const Styles = StyleSheet.create({
   itemList: {
-    backgroundColor: "#069191",
+    borderWidth: 1,
     borderRadius: 5,
     marginVertical: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  titleList: {
     flexDirection: "row",
   },
   itemText: {
@@ -19,8 +23,13 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: "center",
     alignSelf: "center",
+    marginRight: 5,
   },
   deleteButtonText: {
     color: "white",
+    fontSize: 10,
+  },
+  itemSelected: {
+    backgroundColor: "#e6e6e6",
   },
 });

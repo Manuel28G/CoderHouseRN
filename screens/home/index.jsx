@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, FlatList, TouchableOpacity, Text, Button } from "react-native";
 import ListItem from "../../components/molecules/Item-list";
 import CustomInput from "../../components/atoms/custom-input";
 import CircularButton from "../../components/atoms/circular-button";
-import { Style } from "./style";
+import { Style } from "./styles";
 
 function Home() {
   const [text, setText] = useState("");
@@ -45,13 +45,31 @@ function Home() {
     setModalVisible(!modalVisible);
   };
   return (
-    <View style={Style.inputContainer}>
-      <CustomInput style={Style.inputHeight} />
-      <CircularButton
-        onPress={() => {}}
-        buttonText="+"
-        style={Style.buttonHeight}
-      />
+    <View>
+      <View style={Style.inputContainer}>
+        <CustomInput
+          value={text}
+          style={Style.inputHeight}
+          onTextChange={(text) => {
+            handleTextChange(text);
+          }}
+        />
+        <CircularButton
+          onPress={() => {
+            addItem(text);
+          }}
+          buttonText="+"
+          style={Style.buttonHeight}
+        />
+      </View>
+
+      <View style={Style.listContainer}>
+        <FlatList
+          data={list}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
     </View>
   );
 }

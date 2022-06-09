@@ -1,16 +1,27 @@
-import React from "react";
-import { Text, View, TouchableOpacity } from "react-native";
-import { styles } from "./styles";
+import React, { useState } from "react";
+import { Text, View, TouchableOpacity, Switch } from "react-native";
+import { Styles } from "./styles";
 
 export default function ListItem({ item, onHandleModal }) {
+  const [check, setCheck] = useState(false);
+  const [selectedStyle, setSelectedStyle] = useState({});
   return (
-    <View style={styles.itemList}>
-      <Text style={styles.itemText}>{item.title}</Text>
+    <View style={[Styles.itemList, selectedStyle]}>
+      <View style={Styles.titleList}>
+        <Switch
+          value={check}
+          onChange={() => {
+            setSelectedStyle(!check ? Styles.itemSelected : null);
+            setCheck(!check);
+          }}
+        />
+        <Text style={Styles.itemText}>{item.title}</Text>
+      </View>
       <TouchableOpacity
         onPress={() => onHandleModal(item.id)}
-        style={styles.deleteButton}
+        style={Styles.deleteButton}
       >
-        <Text style={styles.deleteButtonText}>X</Text>
+        <Text style={Styles.deleteButtonText}>X</Text>
       </TouchableOpacity>
     </View>
   );

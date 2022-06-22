@@ -2,10 +2,18 @@ import React from "react";
 import { View, Text } from "react-native";
 import { styles } from "./styles";
 
-const ProductDetailScreen = ({ navigation }) => {
+const ProductDetailScreen = ({ route }) => {
+  const { product } = route.params;
+  //const product = products.find((product) => product.id === productId);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>ProductDetails</Text>
+      <View style={styles.details}>
+        <Text style={styles.text}>id: {product.id}</Text>
+        <Text style={styles.text}>{product.name}</Text>
+        <Text style={styles.text}>{product.description}</Text>
+        <Text style={styles.text}>{product.weight}</Text>
+        <Text style={styles.text}>${product.price.toFixed(2)}</Text>
+      </View>
     </View>
   );
 };

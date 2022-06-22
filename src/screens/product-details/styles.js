@@ -7,6 +7,11 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  details: {
+    height: height / 2,
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
   text: {
     fontFamily: "Lato-Bold",
     fontSize: 20,

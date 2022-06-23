@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   details: {
-    height: height / 2,
+    height: 180 / 2,
     justifyContent: "space-around",
     alignItems: "center",
   },

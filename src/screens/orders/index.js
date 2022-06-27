@@ -1,6 +1,6 @@
 import react from "react";
 import { View, Text } from "react-native";
-import {} from "./styles";
+import { styles } from "./styles";
 
 const OrderScreen = () => {
   return (

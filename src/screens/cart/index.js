@@ -1,6 +1,6 @@
 import react from "react";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
-import { Cart } from "../../data/cart";
+import { cart } from "../../data/cart";
 import CartItem from "../../components";
 import { styles } from "./styles";
 import { style } from "../../components/cart-item/styles";
@@ -18,17 +18,26 @@ const renderItem = ({ item }) => {
 };
 
 const CartScreen = () => {
+  const total = 12050;
   return (
     <View style={styles.container}>
       <View style={styles.cartList}>
         <FlatList
-          data={Cart}
+          data={cart}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
         />
       </View>
-      <View sytle={style.footer}>
-        <TouchableOpacity style={style.buttonConfirm}></TouchableOpacity>
+      <View sytle={styles.footer}>
+        <TouchableOpacity
+          style={styles.buttonConfirm}
+          onPress={() => onHandlerConfirmCart()}
+        >
+          <Text style={styles.textConfirm}>Confirm Cart</Text>
+          <View styles={styles.totalContainer}>
+            <Text style={styles.textConfirm}>{total}</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
